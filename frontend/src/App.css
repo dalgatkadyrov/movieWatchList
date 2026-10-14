@@ -16,6 +16,7 @@
 
 .contentHolder-app {
     flex: 1;
+    height: 100vh;
 }
 
 .header-app {
@@ -40,7 +41,7 @@
 
 .main-app {
     width: 100%;
-    height: 100vh;
+    height: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 50px 0;
