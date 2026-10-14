@@ -1,0 +1,40 @@
+.nav{
+    height: 100%;
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: end;
+    gap: 30%;
+    background-color: #F0F0F0;
+
+}
+
+.linksHolder-nav{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    gap: 70px;
+}
+
+.linksHolder-nav button{
+    font-size: 1.2rem;
+    background: none;
+    border: none;
+
+}
+
+.userHolder-nav{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin: 10px;
+
+}
+
+.userHolder-nav div:nth-of-type(1){
+    background-color: lightgray;
+    height: 50px;
+    width: 50px;
+    border-radius: 100px;
+}
