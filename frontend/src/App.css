@@ -41,7 +41,7 @@
 
 .main-app {
     width: 100%;
-    flex: 1;
+    height: 90%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 50px 0;
