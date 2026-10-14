@@ -8,7 +8,7 @@ import watchlist from './assets/icons/watchlist.png'
 import wishlist from './assets/icons/wishlist.png'
 import cancel from './assets/icons/cancel.png'
 
-const url = 'http://localhost:3500/api/lists'
+const url = `${import.meta.env.VITE_API_URL}/api/lists`
 
 function App() {
   const [info, setInfo] = useState([])

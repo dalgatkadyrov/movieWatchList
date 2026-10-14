@@ -17,6 +17,6 @@ app.use('/api/lists', listRoutes)
 
 connectDB().then(()=>{
     app.listen(port, ()=>{
-        console.log(`server runs on 3500`)
+        console.log(`server runs on ${port}`)
     })
 })
