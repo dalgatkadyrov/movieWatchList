@@ -43,6 +43,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 50px 0;
+    overflow: auto;
 
 
 }
