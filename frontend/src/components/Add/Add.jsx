@@ -6,7 +6,7 @@ function Add(props) {
   // const url = 'http://localhost:3500/api/lists'
   const [imgHolder, setImgHolder] = useState('')
   const [imgFile, setImgFile] = useState(null)
-  const [buttonStatus, setButtonStatus] = useState('watching')
+  const [buttonStatus, setButtonStatus] = useState('completed')
   const [error, setError] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
 
