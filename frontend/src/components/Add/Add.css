@@ -145,3 +145,76 @@
     outline: 2px solid #577CBB;
 }
 
+
+@media screen and (max-width: 440px) {
+    .add-add {
+        position: fixed;
+        overflow-y: auto;
+        padding: 16px;
+    }
+
+    .addPanel-add {
+        position: relative;
+        inset: auto;
+        width: 100%;
+        max-width: 420px;
+        min-height: 0;
+        margin: 24px auto;
+        flex-direction: column;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .leftPart-add {
+        flex: none;
+        height: 190px;
+        padding: 16px 16px 0;
+    }
+
+    .leftPart-add label,
+    .leftPart-add img {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        object-fit: contain;
+    }
+
+    .leftPart-add span {
+        font-size: 3rem;
+    }
+
+    .rightPart-add {
+        gap: 24px;
+        padding: 24px 20px 20px;
+    }
+
+    .rightPart-add > input {
+        width: 100%;
+        font-size: 1rem;
+    }
+
+    .rightPart-add > div:nth-of-type(1) {
+        gap: 10px;
+        padding-bottom: 16px;
+    }
+
+    .rightPart-add > div:nth-of-type(1) button {
+        width: 46px;
+        height: 46px;
+        flex: 0 0 46px;
+    }
+
+    .rightPart-add > div:nth-of-type(1) button::after {
+        font-size: 0.65rem;
+        white-space: nowrap;
+        bottom: -20px;
+    }
+
+    .rightPart-add > div:nth-of-type(2) {
+        gap: 12px;
+    }
+
+    .rightPart-add > div:nth-of-type(2) button {
+        font-size: 1.1rem;
+    }
+}
