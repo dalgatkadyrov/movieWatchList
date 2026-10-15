@@ -8,8 +8,8 @@ const watchlist = 'https://res.cloudinary.com/goaevwsc/image/upload/v1792023899/
 const wishlist = 'https://res.cloudinary.com/goaevwsc/image/upload/v1792023899/wishlist.png'
 const cancel = 'https://res.cloudinary.com/goaevwsc/image/upload/v1792023899/cancel.png'
 
-// const url = `${import.meta.env.VITE_API_URL}/api/lists`
-const url = 'http://localhost:3500/api/lists'
+const url = `${import.meta.env.VITE_API_URL}/api/lists`
+// const url = 'http://localhost:3500/api/lists'
 
 function App() {
   const [info, setInfo] = useState([])

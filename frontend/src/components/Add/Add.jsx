@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react'
 import './Add.css'
 
 function Add(props) {
-  // const url = `${import.meta.env.VITE_API_URL}/api/lists`
-  const url = 'http://localhost:3500/api/lists'
+  const url = `${import.meta.env.VITE_API_URL}/api/lists`
+  // const url = 'http://localhost:3500/api/lists'
   const [imgHolder, setImgHolder] = useState('')
   const [imgFile, setImgFile] = useState(null)
   const [buttonStatus, setButtonStatus] = useState('completed')
