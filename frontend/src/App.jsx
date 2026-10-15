@@ -2,13 +2,14 @@ import React, { useCallback, useEffect, useState } from 'react'
 import './App.css'
 import Nav from './components/Nav/Nav'
 import Add from './components/Add/Add'
-import completed from './assets/icons/completed.png'
-import dropped from './assets/icons/dropped.png'
-import watchlist from './assets/icons/watchlist.png'
-import wishlist from './assets/icons/wishlist.png'
-import cancel from './assets/icons/cancel.png'
+const completed = 'https://res.cloudinary.com/goaevwsc/image/upload/v1792023899/completed.png'
+const dropped = 'https://res.cloudinary.com/goaevwsc/image/upload/v1792023899/dropped.png'
+const watchlist = 'https://res.cloudinary.com/goaevwsc/image/upload/v1792023899/watchlist.png'
+const wishlist = 'https://res.cloudinary.com/goaevwsc/image/upload/v1792023899/wishlist.png'
+const cancel = 'https://res.cloudinary.com/goaevwsc/image/upload/v1792023899/cancel.png'
 
 const url = `${import.meta.env.VITE_API_URL}/api/lists`
+// const url = 'http://localhost:3500/api/lists'
 
 function App() {
   const [info, setInfo] = useState([])
@@ -98,10 +99,10 @@ function App() {
               <button onClick={() => handleDeleted(item)}><img src={cancel} alt="" /></button>
               <div className='cardAction-app'>
                 <h2>{item.name}</h2>
-                <button onClick={() => cardTransfer(item, 'completed')}><img src={completed} alt="" /></button>
-                <button onClick={() => cardTransfer(item, 'dropped')}><img src={dropped} alt="" /></button>
-                <button onClick={() => cardTransfer(item, 'wishlist')}><img src={wishlist} alt="" /></button>
                 <button onClick={() => cardTransfer(item, 'watching')}><img src={watchlist} alt="" /></button>
+                <button onClick={() => cardTransfer(item, 'completed')}><img src={completed} alt="" /></button>
+                <button onClick={() => cardTransfer(item, 'wishlist')}><img src={wishlist} alt="" /></button>
+                <button onClick={() => cardTransfer(item, 'dropped')}><img src={dropped} alt="" /></button>
               </div>
             </div>
 
