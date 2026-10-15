@@ -14,7 +14,7 @@ const url = `${import.meta.env.VITE_API_URL}/api/lists`
 function App() {
   const [info, setInfo] = useState([])
   const [panel, setPanel] = useState(false)
-  const [pageStatus, setPageStatus] = useState('watching')
+  const [pageStatus, setPageStatus] = useState('completed')
 
 
   const getData = useCallback(async () => {
@@ -99,8 +99,8 @@ function App() {
               <button onClick={() => handleDeleted(item)}><img src={cancel} alt="" /></button>
               <div className='cardAction-app'>
                 <h2>{item.name}</h2>
-                <button onClick={() => cardTransfer(item, 'watching')}><img src={watchlist} alt="" /></button>
                 <button onClick={() => cardTransfer(item, 'completed')}><img src={completed} alt="" /></button>
+                <button onClick={() => cardTransfer(item, 'watching')}><img src={watchlist} alt="" /></button>
                 <button onClick={() => cardTransfer(item, 'wishlist')}><img src={wishlist} alt="" /></button>
                 <button onClick={() => cardTransfer(item, 'dropped')}><img src={dropped} alt="" /></button>
               </div>

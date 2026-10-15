@@ -67,8 +67,8 @@ function Add(props) {
           <input type="text" placeholder="Name" name="name" required />
           {error && <p role="alert">{error}</p>}
           <div>
-            <button onClick={() => setButtonStatus('watching')} className={buttonStatus === 'watching' ? 'checked' : ''} type="button"><img src={props.watchlist} alt="" /></button>
             <button onClick={() => setButtonStatus('completed')} className={buttonStatus === 'completed' ? 'checked' : ''} type="button"><img src={props.completed} alt="" /></button>
+            <button onClick={() => setButtonStatus('watching')} className={buttonStatus === 'watching' ? 'checked' : ''} type="button"><img src={props.watchlist} alt="" /></button>
             <button onClick={() => setButtonStatus('wishlist')} className={buttonStatus === 'wishlist' ? 'checked' : ''} type="button"><img src={props.wishlist} alt="" /></button>
             <button onClick={() => setButtonStatus('dropped')} className={buttonStatus === 'dropped' ? 'checked' : ''} type="button"><img src={props.dropped} alt="" /></button>
           </div>

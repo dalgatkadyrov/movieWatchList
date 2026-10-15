@@ -7,8 +7,8 @@ function Nav({ setPageStatus }) {
     return (
         <div className='nav'>
             <div className='linksHolder-nav'>
-                <button onClick={() => setPageStatus('watching')}>Watching</button>
                 <button onClick={() => setPageStatus('completed')}>Completed</button>
+                <button onClick={() => setPageStatus('watching')}>Watching</button>
                 <button onClick={() => setPageStatus('wishlist')}>Wishlist</button>
                 <button onClick={() => setPageStatus('dropped')}>Dropped</button>
             </div>
