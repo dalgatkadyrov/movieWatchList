@@ -44,6 +44,8 @@ function App() {
   }
 
   const handleDeleted = async (item) => {
+    if (!window.confirm(`Delete «${item.name}»?`)) return
+
     try {
       const response = await fetch(url + '/' + item._id, { method: 'DELETE' })
       if (!response.ok) {
