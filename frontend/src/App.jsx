@@ -8,13 +8,14 @@ const watchlist = 'https://res.cloudinary.com/goaevwsc/image/upload/v1792023899/
 const wishlist = 'https://res.cloudinary.com/goaevwsc/image/upload/v1792023899/wishlist.png'
 const cancel = 'https://res.cloudinary.com/goaevwsc/image/upload/v1792023899/cancel.png'
 
-const url = `${import.meta.env.VITE_API_URL}/api/lists`
-// const url = 'http://localhost:3500/api/lists'
+// const url = `${import.meta.env.VITE_API_URL}/api/lists`
+const url = 'http://localhost:3500/api/lists'
 
 function App() {
   const [info, setInfo] = useState([])
   const [panel, setPanel] = useState(false)
   const [pageStatus, setPageStatus] = useState('completed')
+  const [isNav, setIsNav] = useState(false)
 
 
   const getData = useCallback(async () => {
@@ -84,11 +85,12 @@ function App() {
 
   return (
     <div className='app'>
-      <Nav setPageStatus={setPageStatus} />
+      <Nav setPageStatus={setPageStatus} setIsNav={setIsNav} isNav={isNav} />
       {panel && <Add completed={completed} dropped={dropped} wishlist={wishlist} watchlist={watchlist} setPanel={setPanel} setInfo={setInfo} info={info} />}
 
       <section className='contentHolder-app'>
         <header className='header-app'>
+          <button onClick={() => setIsNav(true)} className='burger-nav'>☰</button>
           <h1>{pageStatus.charAt(0).toUpperCase() + pageStatus.slice(1)}</h1>
           <button onClick={() => setPanel(true)}>+</button>
         </header>

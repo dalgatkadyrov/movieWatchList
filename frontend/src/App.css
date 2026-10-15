@@ -11,7 +11,7 @@
     height: 100vh;
     display: flex;
     position: relative;
-    
+
 }
 
 .contentHolder-app {
@@ -46,7 +46,7 @@
     flex: 1;
     min-height: 0;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     justify-content: start;
     align-content: start;
     gap: 50px 0;
@@ -129,8 +129,29 @@
 
 }
 
-.app-footer{
+.app-footer {
     position: absolute;
     bottom: 20px;
     right: 30px;
+}
+
+.burger-nav{
+    display: none;
+}
+
+@media screen and (max-width: 440px) {
+    *{
+        color: black;
+    }
+    .burger-nav{
+        display: block;
+    }
+    .main-app {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .card-app{
+        height: 230px;
+        width: 180px;
+    }
+
 }

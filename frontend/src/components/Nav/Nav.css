@@ -1,4 +1,4 @@
-.nav{
+.nav {
     height: 100%;
     width: 250px;
     display: flex;
@@ -7,24 +7,24 @@
     justify-content: end;
     gap: 30%;
     background-color: #F0F0F0;
-
+    position: relative;
 }
 
-.linksHolder-nav{
+.linksHolder-nav {
     display: flex;
     flex-direction: column;
     padding: 20px;
     gap: 70px;
 }
 
-.linksHolder-nav button{
+.linksHolder-nav button {
     font-size: 1.2rem;
     background: none;
     border: none;
 
 }
 
-.userHolder-nav{
+.userHolder-nav {
     display: flex;
     gap: 10px;
     align-items: center;
@@ -32,10 +32,41 @@
 
 }
 
-.userHolder-nav div:nth-of-type(1){
+.userHolder-nav div:nth-of-type(1) {
     background-color: lightgray;
     height: 50px;
     width: 50px;
     border-radius: 100px;
 }
 
+@media screen and (max-width: 440px) {
+
+    .nav{
+        display: none;
+    }
+
+    .navMobile {
+        height: 100%;
+        width: 200px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: end;
+        gap: 30%;
+        background-color: #F0F0F0;
+        position: relative;
+        position: absolute;
+        z-index: 2;
+    }
+
+    .navMobile>button:nth-of-type(1) {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 1.2rem;
+        border: none;
+        background: none;
+    }
+
+
+}

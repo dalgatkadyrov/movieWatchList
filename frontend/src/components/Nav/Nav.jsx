@@ -3,9 +3,10 @@ import './Nav.css'
 
 
 
-function Nav({ setPageStatus }) {
+function Nav({ setPageStatus, setIsNav, isNav }) {
     return (
-        <div className='nav'>
+        <div className={isNav ? 'navMobile' : 'nav'}>
+            <button onClick={() => setIsNav(false) }>X</button>
             <div className='linksHolder-nav'>
                 <button onClick={() => setPageStatus('completed')}>Completed</button>
                 <button onClick={() => setPageStatus('watching')}>Watching</button>
