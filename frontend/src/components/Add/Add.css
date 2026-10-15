@@ -81,7 +81,7 @@
 }
 
 .rightPart-add>div:nth-of-type(1) button:nth-of-type(1)::after {
-    content: 'Watching';
+    content: 'Completed';
     position: absolute;
     bottom: -30px;
     left: 50%;
@@ -89,7 +89,7 @@
 }
 
 .rightPart-add>div:nth-of-type(1) button:nth-of-type(2)::after {
-    content: 'Completed';
+    content: 'Watching';
     position: absolute;
     bottom: -30px;
     left: 50%;
