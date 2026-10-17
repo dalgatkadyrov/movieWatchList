@@ -7,11 +7,13 @@ import authRoutes from './routes/auth.route.js'
 import session from "express-session";
 import MongoStore from 'connect-mongo'
 import mongoose from 'mongoose'
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
 
 const port = Number(process.env.PORT || 3500)
 const isProduction = process.env.NODE_ENV === 'production'
 const clientOrigin = process.env.CLIENT_ORIGIN || 'http://localhost:5173'
-const sessionSameSite = process.env.SESSION_COOKIE_SAME_SITE || (isProduction ? 'none' : 'lax')
+const frontendDist = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../frontend/dist')
 
 if (!process.env.SESSION_SECRET) {
     throw new Error('SESSION_SECRET must be set in backend/.env')
@@ -24,10 +26,12 @@ if (isProduction && process.env.TRUST_PROXY === 'true') {
     app.set('trust proxy', 1)
 }
 
-app.use(cors({
-    origin: clientOrigin,
-    credentials: true
-}))
+if (!isProduction) {
+    app.use(cors({
+        origin: clientOrigin,
+        credentials: true
+    }))
+}
 
 app.use(express.json())
 
@@ -42,7 +46,7 @@ app.use(session({
     cookie: {
         httpOnly: true,
         secure: isProduction,
-        sameSite: sessionSameSite,
+        sameSite: 'lax',
         maxAge: 7 * 24 * 60 * 60 * 1000
     }
 }))
@@ -56,6 +60,14 @@ app.get('/api/health', (_req, res) => {
 
 app.use('/api/lists', listRoutes)
 app.use('/api/auth', authRoutes)
+
+if (isProduction) {
+    app.use(express.static(frontendDist))
+    app.use((req, res, next) => {
+        if (req.method !== 'GET' || req.path.startsWith('/api/')) return next()
+        return res.sendFile(path.join(frontendDist, 'index.html'))
+    })
+}
 
 connectDB().then(() => {
     app.listen(port, '0.0.0.0', () => {
