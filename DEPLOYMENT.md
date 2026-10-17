@@ -8,9 +8,11 @@ In Render, choose **New → Web Service**, select this repository and the branch
 
 - Root Directory: leave blank (Render then uses the repository root)
 - Runtime: `Node`
-- Build Command: `npm ci --prefix backend && npm ci --prefix frontend && npm run build --prefix frontend`
+- Build Command: `npm ci --prefix backend && npm ci --include=dev --prefix frontend && npm run build --prefix frontend`
 - Start Command: `npm start --prefix backend`
 - Health Check Path: `/api/health`
+
+The frontend install includes dev dependencies because Vite is a build tool in `frontend/devDependencies`, while `NODE_ENV=production` is set for the service.
 
 Add these environment variables to the Web Service:
 
