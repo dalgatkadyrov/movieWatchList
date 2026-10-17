@@ -3,20 +3,62 @@ import 'dotenv/config'
 import listRoutes from './routes/list.route.js'
 import { connectDB } from './config/db.js'
 import cors from 'cors'
+import authRoutes from './routes/auth.route.js'
+import session from "express-session";
+import MongoStore from 'connect-mongo'
+import mongoose from 'mongoose'
 
-const port = process.env.PORT
+const port = Number(process.env.PORT || 3500)
+const isProduction = process.env.NODE_ENV === 'production'
+const clientOrigin = process.env.CLIENT_ORIGIN || 'http://localhost:5173'
+const sessionSameSite = process.env.SESSION_COOKIE_SAME_SITE || (isProduction ? 'none' : 'lax')
+
+if (!process.env.SESSION_SECRET) {
+    throw new Error('SESSION_SECRET must be set in backend/.env')
+}
 
 const app = express()
 
-app.use(cors())
+if (isProduction && process.env.TRUST_PROXY === 'true') {
+    // Set this only when the hosting platform puts one trusted proxy in front of Node.
+    app.set('trust proxy', 1)
+}
+
+app.use(cors({
+    origin: clientOrigin,
+    credentials: true
+}))
 
 app.use(express.json())
 
+app.use(session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    store: MongoStore.create({
+        mongoUrl: process.env.MONGODB,
+    }),
+
+    cookie: {
+        httpOnly: true,
+        secure: isProduction,
+        sameSite: sessionSameSite,
+        maxAge: 7 * 24 * 60 * 60 * 1000
+    }
+}))
+
+app.get('/api/health', (_req, res) => {
+    const databaseReady = mongoose.connection.readyState === 1
+    res.status(databaseReady ? 200 : 503).json({
+        status: databaseReady ? 'ok' : 'database unavailable',
+    })
+})
+
 app.use('/api/lists', listRoutes)
+app.use('/api/auth', authRoutes)
 
-
-connectDB().then(()=>{
-    app.listen(port, ()=>{
+connectDB().then(() => {
+    app.listen(port, '0.0.0.0', () => {
         console.log(`server runs on ${port}`)
     })
 })

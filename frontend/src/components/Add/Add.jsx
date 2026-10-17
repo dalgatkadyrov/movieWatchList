@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import './Add.css'
+import { API_BASE } from '../../api'
 
 function Add(props) {
-  const url = `${import.meta.env.VITE_API_URL}/api/lists`
-  // const url = 'http://localhost:3500/api/lists'
+  const url = `${API_BASE}/api/lists`
+
   const [imgHolder, setImgHolder] = useState('')
   const [imgFile, setImgFile] = useState(null)
   const [buttonStatus, setButtonStatus] = useState('completed')
@@ -26,7 +27,11 @@ function Add(props) {
 
     setIsSubmitting(true)
     try {
-      const response = await fetch(url, { method: 'POST', body: formData })
+      const response = await fetch(url, {
+        method: 'POST',
+        credentials: 'include',
+        body: formData,
+      })
       const result = await response.json()
       if (!response.ok) throw new Error(result.message || 'Upload failed')
 

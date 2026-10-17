@@ -19,8 +19,15 @@ const listSchema = new mongoose.Schema({
     },
     pageStatus: {
         type: String,
-        required: true
-    }
+        required: true,
+        enum: ['completed', 'watching', 'wishlist', 'dropped']
+    },
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: true,
+        index: true
+    },
 })
 
 const List = mongoose.model('List', listSchema)
